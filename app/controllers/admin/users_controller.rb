@@ -9,6 +9,18 @@ module Admin
       respond_with(@users)
     end
 
+    def update
+      @user = User.find(params[:id])
+      @user.update_attributes(user_params)
+
+      if @user.save
+        flash[:notice] = "Role was changed."
+        redirect_to admin_users_path
+      else
+        flash.now[:alert] = "There was an error changing the role."
+      end
+    end
+
     def impersonate
       user = User.find(params[:id])
       track_impersonation(user, 'Start')
@@ -32,6 +44,10 @@ module Admin
         impersonated_user_email: user.email,
         impersonated_by_email: true_user.email,
       )
+    end
+
+    def user_params
+      params.require(:user).permit(:roles)
     end
   end
 end

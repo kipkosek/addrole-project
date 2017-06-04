@@ -10,8 +10,12 @@ table
       th
         | Email
       th
+        | Role
       th
-      th
+        | Change Role
+      th class="narrow"
+      th class="narrow"
+      th class="narrow"
   tbody
     - @users.each do |user|
       tr
@@ -21,6 +25,10 @@ table
           = user.last_name
         td
           = link_to user.email, impersonate_admin_user_path(user)
+        td
+          = user.role_symbols[0].to_s.capitalize
+        td
+          = render partial: 'form', locals: { user: user }
         td
           = link_to 'Show', user
         td

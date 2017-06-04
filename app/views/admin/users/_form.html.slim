@@ -1,0 +1,3 @@
+= form_for [:admin, user] do |f|
+  = select("user", "roles", options_for_select([["no role", nil], ["Assistant", :assistant], ["Admin", :admin]]))
+  = f.submit "Change"

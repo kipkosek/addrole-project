@@ -67,7 +67,7 @@ RSpec.configure do |config|
     # launch like States, roles, etc.
     require_relative '../lib/seeder'
     require 'rake'
-    Addrole - project::Application.load_tasks
+    Rails.application.load_tasks
     Rake::Task['db:seed'].invoke
   end
 
