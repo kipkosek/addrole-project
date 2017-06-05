@@ -25,7 +25,7 @@ table
           = user.last_name
         td
           = link_to user.email, impersonate_admin_user_path(user)
-        td
+        td class="role"
           = user.role_symbols[0].to_s.capitalize
         td
           = render partial: 'form', locals: { user: user }

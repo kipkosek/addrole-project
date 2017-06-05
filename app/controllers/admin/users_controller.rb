@@ -14,7 +14,6 @@ module Admin
       @user.update_attributes(user_params)
 
       if @user.save
-        flash[:notice] = 'Role was changed.'
         redirect_to admin_users_path
       else
         flash.now[:alert] = 'There was an error changing the role.'
