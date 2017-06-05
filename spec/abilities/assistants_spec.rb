@@ -1,8 +1,9 @@
 require 'rails_helper'
-require 'cancan/matchers'
+require_relative '../support/matchers/custom_cancan'
 
 describe Canard::Abilities, '#assistants' do
   let(:acting_assistant) { FactoryGirl.create(:user, :assistant) }
+
   subject(:assistant_ability) { Ability.new(acting_assistant) }
 
   describe 'on User' do
