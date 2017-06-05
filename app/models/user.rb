@@ -9,8 +9,8 @@ class User < ApplicationRecord
   before_create :generate_uuid
 
   # Permissions cascade/inherit through the roles listed below. The order of
-  # this list is important, it should progress from least to most privelage
-  ROLES = [:admin].freeze
+  # this list is important, it should progress from least to most privilege
+  ROLES = [:assistant, :admin].freeze
   acts_as_user roles: ROLES
   roles ROLES
 

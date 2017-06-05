@@ -8,17 +8,25 @@ table {
 th {
   border-bottom: 1px solid shade($base-border-color, 25%);
   font-weight: 600;
-  padding: $small-spacing 0;
+  padding: $small-spacing 30px;
   text-align: left;
 }
 
 td {
   border-bottom: $base-border;
-  padding: $small-spacing 0;
+  padding: $small-spacing 30px;
 }
 
 tr,
 td,
 th {
   vertical-align: middle;
+}
+
+td.role {
+  font-style: italic;
+}
+
+th.narrow {
+  width: 100px;
 }
