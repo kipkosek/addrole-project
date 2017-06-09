@@ -49,6 +49,24 @@ RSpec.describe Admin::UsersController, type: :request do
     end
   end
 
+  describe 'PATCH update' do
+    context 'authenticated' do
+      context 'admin' do
+        before do
+          sign_in(admin_user)
+        end
+        it 'updates the user roles' do
+          patch admin_user_path(user.id), params: {
+            user: { roles: 'assistant' },
+          }
+          user.reload
+          expect(user.roles).to include(:assistant)
+          expect(response).to redirect_to(admin_users_path)
+        end
+      end
+    end
+  end
+
   describe '#impersonate' do
     it 'changes the current user from admin to the specified user' do
       sign_in(admin_user)
