@@ -10,9 +10,9 @@ table
       th
         | Email
       th
-        | Role
+        | Roles
       th
-        | Change Role
+        | Add Role
       th class="narrow"
       th class="narrow"
       th class="narrow"
@@ -26,7 +26,7 @@ table
         td
           = link_to user.email, impersonate_admin_user_path(user)
         td class="role"
-          = user.role_symbols[0].to_s.capitalize
+          = user.role_symbols.map { |r| r.to_s.capitalize }.join(", ")
         td
           = render partial: 'form', locals: { user: user }
         td

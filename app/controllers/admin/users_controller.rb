@@ -11,12 +11,13 @@ module Admin
 
     def update
       @user = User.find(params[:id])
-      @user.update_attributes(user_params)
+      new_role = user_params.delete(:roles)
+      @user.roles.merge(roles: new_role)
 
       if @user.save
         redirect_to admin_users_path
       else
-        flash.now[:alert] = 'There was an error changing the role.'
+        flash.now[:alert] = 'There was an error adding the role.'
       end
     end
 
